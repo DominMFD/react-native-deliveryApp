@@ -10,3 +10,14 @@ export function add(products: ProductCartProps[], newProduct: ProductProps) {
         
     return [...products, { ... newProduct, quantity: 1}]
 }
+
+export function remove(product: ProductCartProps[], productRemoveId: string) {
+    const updatedProducts = product.map((product) => 
+    product.id === productRemoveId ? {
+        ...product,
+        quantity: product.quantity > 1 ? product.quantity - 1 : 0
+    } : product
+    )
+
+    return updatedProducts.filter((product) => product.quantity ? - 1 : 0)
+}   
